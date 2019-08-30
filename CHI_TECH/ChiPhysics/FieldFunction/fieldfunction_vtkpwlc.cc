@@ -294,9 +294,7 @@ void chi_physics::FieldFunction::ExportToVTKPWLC(std::string base_name,
 
   //============================================= Parallel summary file
   if (chi_mpi.location_id == 0)
-  {
       WritePVTU(base_filename, field_name);
-  }
 }
 
 
@@ -563,7 +561,5 @@ void chi_physics::FieldFunction::ExportToVTKPWLCG(std::string base_name,
 
   //============================================= Parallel summary file
   if (chi_mpi.location_id == 0)
-  {
       WritePVTU(base_filename, field_name, num_grps);
-  }
 }

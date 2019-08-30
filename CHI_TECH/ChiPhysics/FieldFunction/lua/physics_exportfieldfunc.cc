@@ -31,7 +31,8 @@ int chiExportFieldFunctionToVTK(lua_State *L)
 
   //======================================================= Getting solver
   chi_physics::FieldFunction* ff;
-  try{
+  try
+  {
     ff = chi_physics_handler.fieldfunc_stack.at(ff_handle);
   }
   catch(const std::out_of_range& o)
@@ -58,7 +59,7 @@ int chiExportFieldFunctionToVTKG(lua_State *L)
 {
   int num_args = lua_gettop(L);
   if ((num_args < 2) or (num_args>3))
-    LuaPostArgAmountError("chiExportFieldFunctionToVTK", 2, num_args);
+    LuaPostArgAmountError("chiExportFieldFunctionToVTKG", 2, num_args);
 
   int ff_handle = lua_tonumber(L,1);
   const char* base_name = lua_tostring(L,2);
@@ -68,13 +69,14 @@ int chiExportFieldFunctionToVTKG(lua_State *L)
 
   //======================================================= Getting solver
   chi_physics::FieldFunction* ff;
-  try{
+  try
+  {
     ff = chi_physics_handler.fieldfunc_stack.at(ff_handle);
   }
   catch(const std::out_of_range& o)
   {
     chi_log.Log(LOG_ALLERROR)
-      << "Invalid field function handle in chiPhysicsExportFieldFunctionToVTK";
+      << "Invalid field function handle in chiPhysicsExportFieldFunctionToVTKG";
     exit(EXIT_FAILURE);
   }
 
