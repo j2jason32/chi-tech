@@ -92,11 +92,6 @@ chiPhysicsMaterialAddProperty(materials[2],TRANSPORT_XSECTIONS)
 chiPhysicsMaterialAddProperty(materials[1],ISOTROPIC_MG_SOURCE)
 chiPhysicsMaterialAddProperty(materials[2],ISOTROPIC_MG_SOURCE)
 
-
-
-
-
-
 num_groups = 21
 chiPhysicsMaterialSetProperty(materials[1],TRANSPORT_XSECTIONS,
         PDT_XSFILE,"CHI_TEST/xs_graphite_pure.data")
@@ -113,7 +108,7 @@ chiPhysicsMaterialSetProperty(materials[2],ISOTROPIC_MG_SOURCE,FROM_ARRAY,src)
 
 
 
---############################################### Setup Physics
+--############################################### Setup Transport Physics
 
 phys1 = chiLBSCreateSolver()
 chiSolverAddRegion(phys1,region1)
@@ -166,7 +161,7 @@ chiLBSExecute(phys1)
 fflist1,count = chiLBSGetScalarFieldFunctionList(phys1)
 
 
---############################################### Setup Physics
+--############################################### Setup Diffusion Physics
 phys1 = chiDiffusionCreateSolver();
 chiSolverAddRegion(phys1,region1)
 --fftemp = chiSolverAddFieldFunction(phys1,"Temperature")
@@ -184,10 +179,9 @@ chiDiffusionSetProperty(phys1,RESIDUAL_TOL,1.0e-6)
 
 --############################################### Initialize Solver
 chiDiffusionInitialize(phys1)
-
-
-
 chiDiffusionExecute(phys1)
 --
 ----############################################### Set derived geometry
 fflist2,count = chiGetFieldFunctionList(phys1)
+
+chiExportMultiFieldFunctionToVTK(fflist1[1], fflist2[1], "ZPhi3D","Phi")

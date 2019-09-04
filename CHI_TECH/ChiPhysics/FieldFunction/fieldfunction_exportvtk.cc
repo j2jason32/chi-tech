@@ -51,6 +51,28 @@ void chi_physics::FieldFunction::ExportToVTKG(std::string base_name,
 
 }
 
+//###################################################################
+/**Exports a field function to VTK format.
+ *
+ * */
+void chi_physics::FieldFunction::ExportMultiToVTK(chi_physics::FieldFunction* ff_slave,
+                                             std::string base_name,
+                                             std::string field_name)
+{
+    chi_log.Log(LOG_0)
+            << "Exporting field function " << text_name
+            << " to files with base name " << base_name;
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PWLD NODES
+    if (type == FF_SDM_FV)
+        ExportMultiToVTKFV(ff_slave, base_name,field_name);
+    if (type == FF_SDM_CFEM)
+        ExportMultiToVTKPWLC(ff_slave, base_name,field_name);
+    if (type == FF_SDM_PWLD)
+        ExportMultiToVTKPWLD(ff_slave, base_name,field_name);
+
+}
+
 /** Writes the VTK "Assembly file" for multiple vtu files.
 
 \param base_filename Base name for all vtu file. .pvtu will get appended to it.

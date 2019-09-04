@@ -96,7 +96,7 @@ int chiExportFieldFunctionToVTKG(lua_State *L)
 
 \ingroup LuaFieldFunc
 \author Jan*/
-int chiExportMultiFieldFunctionToVTKG(lua_State *L)
+int chiExportMultiFieldFunctionToVTK(lua_State *L)
 {
   int num_args = lua_gettop(L);
   if ((num_args < 3) or (num_args>4))
@@ -111,7 +111,8 @@ int chiExportMultiFieldFunctionToVTKG(lua_State *L)
 
   //======================================================= Getting solver
   chi_physics::FieldFunction* ff;
-  try{
+  try
+  {
     ff = chi_physics_handler.fieldfunc_stack.at(ff_handle);
   }
   catch(const std::out_of_range& o)
@@ -122,7 +123,8 @@ int chiExportMultiFieldFunctionToVTKG(lua_State *L)
   }
 
   chi_physics::FieldFunction* ff_slave;
-  try{
+  try
+  {
     ff_slave = chi_physics_handler.fieldfunc_stack.at(ff_handle_slave);
   }
   catch(const std::out_of_range& o)
@@ -134,6 +136,6 @@ int chiExportMultiFieldFunctionToVTKG(lua_State *L)
 
 //  ff->ExportToVTKG(base_name,field_name);
 
-//  ff->ExportMultiToVTKG(ff_slave,base_name,field_name);
+  ff->ExportMultiToVTK(ff_slave,base_name,field_name);
   return 0;
 }
