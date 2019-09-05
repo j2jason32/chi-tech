@@ -35,7 +35,7 @@ void chi_physics::FieldFunction::ExportToVTK(std::string base_name,
  *
  * */
 void chi_physics::FieldFunction::ExportToVTKG(std::string base_name,
-                                             std::string field_name)
+                                              std::string field_name)
 {
   chi_log.Log(LOG_0)
     << "Exporting field function " << text_name
@@ -64,10 +64,12 @@ void chi_physics::FieldFunction::ExportMultiToVTK(chi_physics::FieldFunction* ff
             << " to files with base name " << base_name;
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PWLD NODES
+    /*
     if (type == FF_SDM_FV)
         ExportMultiToVTKFV(ff_slave, base_name,field_name);
     if (type == FF_SDM_CFEM)
         ExportMultiToVTKPWLC(ff_slave, base_name,field_name);
+        */
     if (type == FF_SDM_PWLD)
         ExportMultiToVTKPWLD(ff_slave, base_name,field_name);
 
@@ -96,7 +98,7 @@ void chi_physics::FieldFunction::WritePVTU(std::string base_filename,
     ofile << "  <PUnstructuredGrid GhostLevel=\"0\">" << std::endl;
     ofile << "    <PPointData Scalars=\"scalars\">" << std::endl;
 
-    if (num_grps == 0)
+    if (num_grps == 0 || num_grps == 1)
     {
         ofile << "      <PDataArray type=\"Float64\" Name=\""
               << field_name << "\" format=\"ascii\"/>" << std::endl;
@@ -120,7 +122,7 @@ void chi_physics::FieldFunction::WritePVTU(std::string base_filename,
     ofile << "      <PDataArray type=\"Int32\" Name=\"Partition\""
           << " format=\"ascii\"/>" << std::endl;
 
-    if (num_grps == 0)
+    if (num_grps == 0 || num_grps == 1)
     {
         ofile << "      <PDataArray type=\"Float64\" Name=\""
               << field_name + std::string("-Avg") << "\" format=\"ascii\"/>" << std::endl;

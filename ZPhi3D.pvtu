@@ -5,12 +5,12 @@
 <VTKFile type="PUnstructuredGrid" version="0.1" byte_order="LittleEndian">
   <PUnstructuredGrid GhostLevel="0">
     <PPointData Scalars="scalars">
-      <PDataArray type="Float64" Name="Temperature_g000" format="ascii"/>
+      <PDataArray type="Float64" Name="Temperature" format="ascii"/>
     </PPointData>
     <PCellData Scalars="scalars">
       <PDataArray type="Int32" Name="Material"  format="ascii"/>
       <PDataArray type="Int32" Name="Partition" format="ascii"/>
-      <PDataArray type="Float64" Name="Temperature_g000_avg" format="ascii"/>
+      <PDataArray type="Float64" Name="Temperature-Avg" format="ascii"/>
     </PCellData>
     <PPoints>
       <PDataArray type="Float32" NumberOfComponents="3"/>

@@ -309,7 +309,6 @@ void chi_physics::FieldFunction::ExportToVTKPWLDG(std::string base_name,
   {
       if (num_grps == 1)
       {
-          std::cout << endl << "here" << endl;
           phiarray[g] = vtkDoubleArray::New();
           phiarray[g]->SetName(field_name.c_str());
           phiavgarray[g] = vtkDoubleArray::New();
@@ -317,7 +316,6 @@ void chi_physics::FieldFunction::ExportToVTKPWLDG(std::string base_name,
       }
       else
       {
-          std::cout << endl << "here2" << num_grps << endl;
           char group_text[100];
           sprintf(group_text,"%03d",g);
           phiarray[g]    = vtkDoubleArray::New();
@@ -558,7 +556,7 @@ void chi_physics::FieldFunction::ExportToVTKPWLDG(std::string base_name,
 /**Handles the PWLD version of a field function export to VTK with all groups.
  *
  * */
-void chi_physics::FieldFunction::ExportMultiToVTKPWLDG(chi_physics::FieldFunction* ff_slave,
+void chi_physics::FieldFunction::ExportMultiToVTKPWLD(chi_physics::FieldFunction* ff_slave,
                                                        std::string base_name,
                                                        std::string field_name)
 {
@@ -590,7 +588,6 @@ void chi_physics::FieldFunction::ExportMultiToVTKPWLDG(chi_physics::FieldFunctio
     {
         if (num_grps == 1)
         {
-            std::cout << endl << "here" << endl;
             phiarray[g] = vtkDoubleArray::New();
             phiarray[g]->SetName(field_name.c_str());
             phiavgarray[g] = vtkDoubleArray::New();
@@ -598,7 +595,6 @@ void chi_physics::FieldFunction::ExportMultiToVTKPWLDG(chi_physics::FieldFunctio
         }
         else
         {
-            std::cout << endl << "here2" << num_grps << endl;
             char group_text[100];
             sprintf(group_text,"%03d",g);
             phiarray[g]    = vtkDoubleArray::New();
