@@ -184,4 +184,15 @@ chiDiffusionExecute(phys1)
 ----############################################### Set derived geometry
 fflist2,count = chiGetFieldFunctionList(phys1)
 
-chiExportMultiFieldFunctionToVTK(fflist1[1], fflist2[1], "ZPhi3D","Phi")
+chiTable = {}
+chiTabl[1] = {}
+chiTable[2] = {}
+
+chiTable[1][1] = fflist1[1]
+chiTable[1][2] = ZPhi3D_Trans
+chiTable[1][3] = Phi_Trans
+
+chiTable[2][1] = fflist2[1]
+chiTable[2][2] = ZPhi3D_Diff
+chiTable[2][3] = Phi_Diff
+chiExportMultiFieldFunctionToVTK(chiTable)

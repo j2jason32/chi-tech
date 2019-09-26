@@ -20,7 +20,7 @@ extern ChiLog     chi_log;
 int chiExportFieldFunctionToVTK(lua_State *L)
 {
   int num_args = lua_gettop(L);
-  if ((num_args < 2) or (num_args>3))
+  if ((num_args < 2) or (num_args > 3))
     LuaPostArgAmountError("chiExportFieldFunctionToVTK", 2, num_args);
 
   int ff_handle = lua_tonumber(L,1);
@@ -58,7 +58,7 @@ int chiExportFieldFunctionToVTK(lua_State *L)
 int chiExportFieldFunctionToVTKG(lua_State *L)
 {
   int num_args = lua_gettop(L);
-  if ((num_args < 2) or (num_args>3))
+  if ((num_args < 2) or (num_args > 3))
     LuaPostArgAmountError("chiExportFieldFunctionToVTKG", 2, num_args);
 
   int ff_handle = lua_tonumber(L,1);
@@ -99,15 +99,22 @@ int chiExportFieldFunctionToVTKG(lua_State *L)
 int chiExportMultiFieldFunctionToVTK(lua_State *L)
 {
   int num_args = lua_gettop(L);
-  if ((num_args < 3) or (num_args>4))
+  if (type(chiTable != "table"))
+      LuaPostArgAmountError("chiExportMultiFieldFunctionToVTKG expected a lua table");
+  else
+      if (type(chiTable[1] != "table"))
+
+  if ((num_args < 2) or (num_args > 3))
     LuaPostArgAmountError("chiExportMultiFieldFunctionToVTKG", 3, num_args);
 
   int ff_handle = lua_tonumber(L,1);
-  int ff_handle_slave = lua_tonumber(L,2);
-  const char* base_name = lua_tostring(L,3);
+  const char* base_name = lua_tostring(L,2);
   const char* field_name = base_name;
-  if (num_args == 4)
-    field_name = lua_tostring(L,4);
+  int ff_handle_slave = lua_tonumber(L,4);
+  const char* base_name2 = lua_tostring(L,5);
+  const char* field_name2 = base_name;
+  if (num_args == 3)
+    field_name = lua_tostring(L,3);
 
   //======================================================= Getting solver
   chi_physics::FieldFunction* ff;
@@ -122,6 +129,8 @@ int chiExportMultiFieldFunctionToVTK(lua_State *L)
     exit(EXIT_FAILURE);
   }
 
+  ff->ExportToVTKG(base_name,field_name);
+
   chi_physics::FieldFunction* ff_slave;
   try
   {
@@ -134,8 +143,7 @@ int chiExportMultiFieldFunctionToVTK(lua_State *L)
     exit(EXIT_FAILURE);
   }
 
-//  ff->ExportToVTKG(base_name,field_name);
+  ff_slave->ExportToVTKG(base_name2,field_name2);
 
-  ff->ExportMultiToVTK(ff_slave,base_name,field_name);
   return 0;
 }

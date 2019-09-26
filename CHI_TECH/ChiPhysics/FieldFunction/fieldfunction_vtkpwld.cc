@@ -560,8 +560,8 @@ void chi_physics::FieldFunction::ExportMultiToVTKPWLD(chi_physics::FieldFunction
                                                        std::string base_name,
                                                        std::string field_name)
 {
-    CHI_DISCRETIZATION_PWL* pwl_sdm =
-            (CHI_DISCRETIZATION_PWL*)spatial_discretization;
+    SpatialDiscretization_PWL* pwl_sdm =
+            (SpatialDiscretization_PWL*)spatial_discretization;
 
     chi_mesh::FieldFunctionInterpolation ff_interpol;
     ff_interpol.grid_view = grid;
