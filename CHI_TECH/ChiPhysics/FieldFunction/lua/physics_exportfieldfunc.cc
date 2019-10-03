@@ -105,35 +105,33 @@ int chiExportMultiFieldFunctionToVTK(lua_State *L)
     }
     else
     {
-        for (int i = 1; i < int(lua_rawlen(L, 1) + 1); ++i)
+      for (int i = 1; i <= int(lua_rawlen(L, 1)); ++i)
+      {
+        lua_pushnumber(L, i);
+        lua_gettable(L, 1);
+        if (lua_istable(L, 2) == 0)
         {
-            lua_pushstring(L, i);
-            lua_gettable(L, 1);
-            chi_log.Log(LOG_0) << lua_rawlen(L, 2);
-            if (lua_istable(L, 2) == 0)
-            {
-                chi_log.Log(LOG_0ERROR)
-                        << "chiExportMultiFieldFunctionToVTKG expected a lua table";
-                exit(EXIT_FAILURE);
-            }
-            else
-            {
-                int num_args = lua_rawlen(L, 2);
-                chi_log.Log(LOG_0) << num_args;
-                if ((num_args < 2) or (num_args > 3))
-                {
-                    LuaPostArgAmountError("chiExportMultiFieldFunctionToVTKG", 3, num_args);
-                    exit(EXIT_FAILURE);
-                }
-            }
-            lua_pop(L, -1);
+          chi_log.Log(LOG_0ERROR)
+                  << "chiExportMultiFieldFunctionToVTKG expected a lua table";
+          break;
         }
+        else
+        {
+          int num_args = lua_rawlen(L, 2);
+          if ((num_args < 2) or (num_args > 3))
+          {
+            LuaPostArgAmountError("chiExportMultiFieldFunctionToVTKG", 3, num_args);
+            break;
+          }
+        }
+        lua_pop(L, 1);
+      }
     }
 
-    int ff_handle;
-    const char* field_name;
-    const char* base_name;
-    for (int i = 1; i < int(lua_rawlen(L, 1) + 1); ++i)
+    std::vector<int> ff_handle;
+    std::vector<const char*> field_name;
+    std::vector<const char*> base_name;
+    for (int i = 1; i <= int(lua_rawlen(L, 1)); ++i)
     {
         lua_pushnumber(L, i);
         lua_gettable(L, 1);
@@ -144,39 +142,43 @@ int chiExportMultiFieldFunctionToVTK(lua_State *L)
             lua_gettable(L, 2);
             if (j == 1)
             {
-                ff_handle = lua_tonumber(L, 3);
+                ff_handle.push_back(lua_tonumber(L, 3));
             }
             else
             {
                 if (j == 3)
-                    field_name = lua_tostring(L,3);
+                {
+                  field_name[i - 1] = lua_tostring(L, 3);
+                }
                 else
                 {
-                    base_name = lua_tostring(L, 3);
-                    field_name = base_name;
+                    base_name.push_back(lua_tostring(L, 3));
+                    field_name.push_back(base_name[i-1]);
                 }
             }
 
-            lua_pop(L, -1);
+            lua_pop(L, 1);
         }
-        lua_pop(L, -1);
+        lua_pop(L, 1);
     }
 
     //======================================================= Getting solver
-    chi_log.Log(LOG_0) << ff_handle;
-    chi_physics::FieldFunction* ff;
-    try
+    for (unsigned long i = 0; i < ff_handle.size(); ++i)
     {
-      ff = chi_physics_handler.fieldfunc_stack.at(ff_handle);
-    }
-    catch(const std::out_of_range& o)
-    {
-      chi_log.Log(LOG_ALLERROR)
-        << "Invalid field function handle in chiPhysicsExportFieldFunctionToVTK";
-      exit(EXIT_FAILURE);
-    }
+      chi_physics::FieldFunction *ff;
+      try
+      {
+        ff = chi_physics_handler.fieldfunc_stack.at(ff_handle[i]);
+      }
+      catch (const std::out_of_range &o)
+      {
+        chi_log.Log(LOG_ALLERROR)
+          << "Invalid field function handle in chiPhysicsExportFieldFunctionToVTK";
+        exit(EXIT_FAILURE);
+      }
 
-    ff->ExportToVTKG(base_name,field_name);
+      ff->ExportMultiToVTK(std::string(base_name[i]), std::string(field_name[i]));
+    }
 
     return 0;
 }

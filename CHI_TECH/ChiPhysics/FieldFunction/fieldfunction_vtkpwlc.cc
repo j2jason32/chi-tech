@@ -304,7 +304,8 @@ void chi_physics::FieldFunction::ExportToVTKPWLC(std::string base_name,
  *
  * */
 void chi_physics::FieldFunction::ExportToVTKPWLCG(std::string base_name,
-                                                 std::string field_name)
+                                                 std::string field_name,
+                                                 int arg)
 {
   SpatialDiscretization_PWL* pwl_sdm =
     (SpatialDiscretization_PWL*)spatial_discretization;

@@ -211,7 +211,8 @@ void chi_physics::FieldFunction::ExportToVTKFV(std::string base_name,
  *
  * */
 void chi_physics::FieldFunction::ExportToVTKFVG(std::string base_name,
-                                               std::string field_name)
+                                               std::string field_name,
+                                               int arg)
 {
   chi_mesh::FieldFunctionInterpolation ff_interpol;
   ff_interpol.grid_view = grid;

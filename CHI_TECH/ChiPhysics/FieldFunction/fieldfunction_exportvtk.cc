@@ -35,7 +35,8 @@ void chi_physics::FieldFunction::ExportToVTK(std::string base_name,
  *
  * */
 void chi_physics::FieldFunction::ExportToVTKG(std::string base_name,
-                                              std::string field_name)
+                                              std::string field_name,
+                                              int arg)
 {
   chi_log.Log(LOG_0)
     << "Exporting field function " << text_name
@@ -43,11 +44,11 @@ void chi_physics::FieldFunction::ExportToVTKG(std::string base_name,
 
   //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PWLD NODES
   if (type == FF_SDM_FV)
-    ExportToVTKFVG(base_name,field_name);
+    ExportToVTKFVG(base_name,field_name,arg);
   if (type == FF_SDM_CFEM)
-    ExportToVTKPWLCG(base_name,field_name);
+    ExportToVTKPWLCG(base_name,field_name,arg);
   if (type == FF_SDM_PWLD)
-    ExportToVTKPWLDG(base_name,field_name);
+    ExportToVTKPWLDG(base_name,field_name,arg);
 
 }
 
@@ -55,9 +56,8 @@ void chi_physics::FieldFunction::ExportToVTKG(std::string base_name,
 /**Exports a field function to VTK format.
  *
  * */
-void chi_physics::FieldFunction::ExportMultiToVTK(chi_physics::FieldFunction* ff_slave,
-                                             std::string base_name,
-                                             std::string field_name)
+void chi_physics::FieldFunction::ExportMultiToVTK(std::string base_name,
+                                                  std::string field_name)
 {
     chi_log.Log(LOG_0)
             << "Exporting field function " << text_name
@@ -71,7 +71,7 @@ void chi_physics::FieldFunction::ExportMultiToVTK(chi_physics::FieldFunction* ff
         ExportMultiToVTKPWLC(ff_slave, base_name,field_name);
         */
     if (type == FF_SDM_PWLD)
-        ExportMultiToVTKPWLD(ff_slave, base_name,field_name);
+        ExportMultiToVTKPWLD(base_name,field_name);
 
 }
 

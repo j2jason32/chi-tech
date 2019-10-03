@@ -41,31 +41,20 @@ public:
 
   //01
   void ExportToVTK(std::string base_name, std::string field_name);
-  void ExportToVTKG(std::string base_name, std::string field_name);
-  void ExportMultiToVTK(chi_physics::FieldFunction* ff_slave,
-                        std::string base_name,
-                        std::string field_name);
+  void ExportToVTKG(std::string base_name, std::string field_name, int arg=0);
+  void ExportMultiToVTK(std::string base_name, std::string field_name);
 
   //01a
   void ExportToVTKFV(std::string base_name, std::string field_name);
-  void ExportToVTKFVG(std::string base_name, std::string field_name);
-  //void ExportMultiToVTKFV(chi_physics::FieldFunction* ff_slave,
-  //                      std::string base_name,
-  //                      std::string field_name);
+  void ExportToVTKFVG(std::string base_name, std::string field_name, int arg);
 
   //01b
   void ExportToVTKPWLC(std::string base_name, std::string field_name);
-  void ExportToVTKPWLCG(std::string base_name, std::string field_name);
-  //void ExportMultiToVTKPWLC(chi_physics::FieldFunction* ff_slave,
-  //                      std::string base_name,
-  //                      std::string field_name);
+  void ExportToVTKPWLCG(std::string base_name, std::string field_name, int arg);
 
   //01c
   void ExportToVTKPWLD(std::string base_name, std::string field_name);
-  void ExportToVTKPWLDG(std::string base_name, std::string field_name);
-  void ExportMultiToVTKPWLD(chi_physics::FieldFunction* ff_slave,
-                        std::string base_name,
-                        std::string field_name);
+  void ExportToVTKPWLDG(std::string base_name, std::string field_name, int arg);
 
   void WritePVTU(std::string base_filename, std::string field_name, int num_grps=0);
 };

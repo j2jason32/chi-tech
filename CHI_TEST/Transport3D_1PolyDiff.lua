@@ -120,12 +120,12 @@ for g=1,num_groups do
 end
 
 --========== ProdQuad
-pquad = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,2, 2)
+pquad = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,1, 1)
 pquad2 = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,16, 16)
 
 --========== Groupset def
 gs0 = chiLBSCreateGroupset(phys1)
-chiLBSGroupsetAddGroups(phys1,gs0,0,20)
+chiLBSGroupsetAddGroups(phys1,gs0,0,0)
 chiLBSGroupsetSetQuadrature(phys1,gs0,pquad)
 --
 --gs1 = chiLBSCreateGroupset(phys1)
@@ -189,10 +189,10 @@ chiTable[1] = {}
 chiTable[2] = {}
 
 chiTable[1][1] = fflist1[1]
-chiTable[1][2] = ZPhi3D_Trans
-chiTable[1][3] = Phi_Trans
+chiTable[1][2] = "ZPhi3D_Trans"
+chiTable[1][3] = "Phi_Trans"
 
---chiTable[2][1] = fflist2[1]
---chiTable[2][2] = ZPhi3D_Diff
---chiTable[2][3] = Phi_Diff
+chiTable[2][1] = fflist2[1]
+chiTable[2][2] = "ZPhi3D_Diff"
+chiTable[2][3] = "Phi_Diff"
 chiExportMultiFieldFunctionToVTK(chiTable)
