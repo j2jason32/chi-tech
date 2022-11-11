@@ -62,4 +62,13 @@ void lbs_adjoint::AdjointSolver::Initialize()
                   << num_globl_subs;
   }
 
+   //============================================= Make List of Boundary Cells
+   cells_on_bndry.clear();
+   for (const auto& cell : grid->local_cells)
+    for (const auto& face : cell.faces)
+      if (not face.has_neighbor)
+      {
+        cells_on_bndry.push_back(cell.local_id);
+        break;
+      }
 }

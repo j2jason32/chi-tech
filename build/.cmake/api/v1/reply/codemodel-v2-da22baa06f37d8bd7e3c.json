@@ -1,0 +1,362 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				},
+				{
+					"build" : "ThirdParty",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-ThirdParty-Debug-a29567a51ddf8bd8c0e2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ThirdParty",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "ThirdParty/paraview",
+					"jsonFile" : "directory-ThirdParty.paraview-Debug-a6e1ed1619e729552b53.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "ThirdParty/paraview",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "ChiTech/ChiConsole",
+					"jsonFile" : "directory-ChiTech.ChiConsole-Debug-26d95eff1cd15fe04041.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiConsole"
+				},
+				{
+					"build" : "ChiTech/ChiLua",
+					"jsonFile" : "directory-ChiTech.ChiLua-Debug-e7759febd532492a78d8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiLua"
+				},
+				{
+					"build" : "ChiTech/ChiMath",
+					"jsonFile" : "directory-ChiTech.ChiMath-Debug-0b3e2af062914cf8bfec.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiMath"
+				},
+				{
+					"build" : "ChiTech/ChiPhysics",
+					"jsonFile" : "directory-ChiTech.ChiPhysics-Debug-b3b51d863ce34333f690.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiPhysics"
+				},
+				{
+					"build" : "ChiTech/ChiGraph",
+					"jsonFile" : "directory-ChiTech.ChiGraph-Debug-4274290fd21d8f0f0faf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiGraph"
+				},
+				{
+					"build" : "ChiTech/ChiTimer",
+					"jsonFile" : "directory-ChiTech.ChiTimer-Debug-2eb88e9e618aaa3471db.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiTimer"
+				},
+				{
+					"build" : "ChiTech/ChiMesh",
+					"jsonFile" : "directory-ChiTech.ChiMesh-Debug-666339c4ee41ec1e96cf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiMesh"
+				},
+				{
+					"build" : "ChiTech/ChiMPI",
+					"jsonFile" : "directory-ChiTech.ChiMPI-Debug-ed80cb069dad58fb2402.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiMPI"
+				},
+				{
+					"build" : "ChiTech/ChiLog",
+					"jsonFile" : "directory-ChiTech.ChiLog-Debug-af6937cc349f9e047aa8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiLog"
+				},
+				{
+					"build" : "ChiTech/ChiDataTypes",
+					"jsonFile" : "directory-ChiTech.ChiDataTypes-Debug-317160f0a7e546372da6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiDataTypes"
+				},
+				{
+					"build" : "ChiTech/ChiMiscUtils",
+					"jsonFile" : "directory-ChiTech.ChiMiscUtils-Debug-a5963ac01678b6b5a80c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/ChiMiscUtils"
+				},
+				{
+					"build" : "ChiTech/LuaTest",
+					"jsonFile" : "directory-ChiTech.LuaTest-Debug-b25272a204ca0027d047.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiTech/LuaTest"
+				},
+				{
+					"build" : "ChiModules",
+					"childIndexes" : 
+					[
+						16,
+						17,
+						18,
+						19,
+						20
+					],
+					"jsonFile" : "directory-ChiModules-Debug-9e61a665949397133f3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ChiModules"
+				},
+				{
+					"build" : "ChiModules/DiffusionSolver",
+					"jsonFile" : "directory-ChiModules.DiffusionSolver-Debug-0e8c47ab264a28cf50c6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 15,
+					"projectIndex" : 0,
+					"source" : "ChiModules/DiffusionSolver"
+				},
+				{
+					"build" : "ChiModules/LinearBoltzmannSolver",
+					"jsonFile" : "directory-ChiModules.LinearBoltzmannSolver-Debug-c46d11f19c8a2e1646db.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 15,
+					"projectIndex" : 0,
+					"source" : "ChiModules/LinearBoltzmannSolver"
+				},
+				{
+					"build" : "ChiModules/LBSCurvilinear",
+					"jsonFile" : "directory-ChiModules.LBSCurvilinear-Debug-0f68b9efbbdadf9e03ab.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 15,
+					"projectIndex" : 0,
+					"source" : "ChiModules/LBSCurvilinear"
+				},
+				{
+					"build" : "ChiModules/LBKEigenvalueSolver",
+					"jsonFile" : "directory-ChiModules.LBKEigenvalueSolver-Debug-67bc65d87bbfc913da0f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 15,
+					"projectIndex" : 0,
+					"source" : "ChiModules/LBKEigenvalueSolver"
+				},
+				{
+					"build" : "ChiModules/LBSAdjointSolver",
+					"jsonFile" : "directory-ChiModules.LBSAdjointSolver-Debug-0611e875fa34a3b30b38.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 15,
+					"projectIndex" : 0,
+					"source" : "ChiModules/LBSAdjointSolver"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20
+					],
+					"name" : "ChiTech",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ChiLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ChiLib-Debug-a7aabeb3bc7767bcad14.json",
+					"name" : "ChiLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ChiTech::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ChiTech-Debug-f40350343e2bf9fda8a2.json",
+					"name" : "ChiTech",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ThirdParty::@54439f0f49e30ae3c46f",
+					"jsonFile" : "target-ThirdParty-Debug-79c98b5c0b8e8086118b.json",
+					"name" : "ThirdParty",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ThirdPartyParaView::@6364499d1287eed95fe9",
+					"jsonFile" : "target-ThirdPartyParaView-Debug-ca852feb573e7b8d2904.json",
+					"name" : "ThirdPartyParaView",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/jason/Documents/Work/Chi-Tech/chi-tech-adjoint/build",
+		"source" : "/home/jason/Documents/Work/Chi-Tech/chi-tech-adjoint"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

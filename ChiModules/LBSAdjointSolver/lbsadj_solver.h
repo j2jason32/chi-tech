@@ -21,6 +21,7 @@ protected:
   typedef std::vector<size_t> VecSize_t;
   typedef std::pair<ResponseFunctionDesignation,VecSize_t> RespFuncAndSubs;
   std::vector<RespFuncAndSubs> response_functions;
+  std::vector<uint64_t> cells_on_bndry;
 
 public:
   std::vector<std::vector<double>> m_moment_buffers;

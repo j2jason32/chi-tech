@@ -73,6 +73,73 @@ double lbs_adjoint::AdjointSolver::ComputeInnerProduct()
     }//for cell
   }//for point source
 
+  //============================================= Incident Flux Case
+  for (const auto& groupset : groupsets)
+  {
+    const auto& quadrature = groupset.quadrature;
+    const size_t num_dirs = quadrature->omegas.size();
+
+    const auto& d2m = groupset.quadrature->GetDiscreteToMomentOperator();
+    const auto& m2d = groupset.quadrature->GetMomentToDiscreteOperator();
+
+    for (const auto& group : groupset.groups)
+    {
+      const auto g = group.id;
+      for (size_t n=0; n<num_dirs; ++n)
+      {
+        const auto& omega = quadrature->omegas[n];
+        const auto& w     = quadrature->weights[n];
+
+        for (uint64_t cell_local_id : cells_on_bndry)
+        {
+          const auto& cell = grid->local_cells[cell_local_id];
+          const auto& transport_view = cell_transport_views[cell.local_id];
+          const auto& fe_values = pwl->GetUnitIntegrals(cell);
+          const auto& S = fe_values.GetIntS_shapeI();
+
+          for (size_t f=0; f<cell.faces.size(); ++f)
+          {
+            const auto& face = cell.faces[f];
+            if (face.has_neighbor) continue; //skip internal faces
+
+            const auto& S_f = S[f];
+            const double mu_f = omega.Dot(face.normal);
+
+            // const double q_surf = (mu_f>0.0)? 0.0 : 1.0;
+            double q_surf = 0.0;
+            if (mu_f < 0)
+            {
+                const auto& boundary = *sweep_boundaries.at(face.neighbor_id);
+                if (boundary.Type() == chi_mesh::sweep_management::BoundaryType::INCIDENT_HOMOGENOUS)
+                    q_surf = boundary.boundary_flux.at(g);
+            }
+
+
+            for (size_t fi=0; fi<face.vertex_ids.size(); ++fi)
+            {
+              const auto i = fe_values.FaceDofMapping(f, fi);
+              const auto dof_map = transport_view.MapDOF(i, 0, g);
+              double phi_star_gin = phi_old_local[dof_map];
+              phi_star_gin *= m2d[0][n];
+
+              //Make expansion of phi_star
+            //   double psi_star_gin = 0.0;
+            //   for (size_t m=0; m<num_moments; ++m)
+            //   {
+            //     const auto dof_map = transport_view.MapDOF(i, m, g);
+            //     const double phi_star_m = phi_old_local[dof_map];
+
+            //     psi_star_gin += phi_star_m;
+            //   }//for m
+
+              local_integral -= w * q_surf * phi_star_gin * mu_f * S_f[i];  
+            }//for fi
+          }//for face
+        }//for cell
+      }//for dir_n
+    }//for group
+  }//for groupset
+
   double global_integral = 0.0;
 
   MPI_Allreduce(&local_integral,     //sendbuf
